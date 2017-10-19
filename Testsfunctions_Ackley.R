@@ -18,17 +18,18 @@ dd <- x
 dd <- cbind(dd, z)
 names(dd) <- c("x", "y", "z")
 
-
+#noisy version by adding uniforme noise of magnitude 2 
 znoisy <- z + 2*runif(nrow(z))
 
+# choose one of the following 
 zz <- matrix(z,nrow = 50)  
 zz <- matrix(znoisy, nrow = 50)
 
-
+#display with plotly
 plot_ly(z = ~zz) %>%
   add_surface( opacity= 0.85)
 
-#implementation R 
+#implementation in pure R 
 ackley <- function(xx, a=20, b=0.2, c=2*pi)
 {
   ##########################################################################
@@ -79,3 +80,7 @@ ackley <- function(xx, a=20, b=0.2, c=2*pi)
 }
 
 ######################################################
+
+
+
+
