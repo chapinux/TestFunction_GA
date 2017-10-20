@@ -25,11 +25,12 @@ znoisy <- z + 2*runif(nrow(z))
 zz <- matrix(z,nrow = 50)  
 zz <- matrix(znoisy, nrow = 50)
 
-#display with plotly
-plot_ly(z = ~zz) %>%
-  add_surface( opacity= 0.85)
 
-#implementation in pure R 
+
+#display with plotly
+plot_ly(z = ~zz, type="surface")
+
+#implementation in pure R , just in case
 ackley <- function(xx, a=20, b=0.2, c=2*pi)
 {
   ##########################################################################
