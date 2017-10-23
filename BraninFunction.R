@@ -11,21 +11,29 @@
 #f = 1 / 8 * pi . Three global optima equal f (x 1 , x 2 ) = 0.397887
 # are located as follows: (x 1 , x 2 ) = (−pi, 12.275), (pi, 2.275), (9.42478, 2.475).
 
+
+# minimum value : 0.397887 (paper)
+# minimum for 100x100 grid : 0.4010828
+
 library(plotly)
 
 
 # lattice 
-x <- seq (-10,10 , length=100)
-y <- seq (-10,10, length=100)
-z <- seq (0,0, length=100)
+x <- seq (-5,20 , length=100)
+y <- seq (-5,20, length=100)
 
-m <-  10
+
+a <- 1 
+b <- 5.1 / (4* pi^2)
+c <- 5 / pi 
+d <- 6
+e <- 10
+f <- 1 / (8*pi)
 
 
 points <- expand.grid(x,y)
 
-z <- - sin(points$Var1)*(sin((points$Var1^2)/pi)^(2*m))  - sin(points$Var2)*(sin(((2*points$Var2)^2)/pi)^(2*m)) 
-
+z <- a * ( points$Var2 -b*points$Var1^2 + c * points$Var1 - d)^2 + e* (1-f)*cos(points$Var1) + e
 
 points <- cbind(points, z)
 names(points) <- c("x", "y", "z")
@@ -34,5 +42,4 @@ names(points) <- c("x", "y", "z")
 surf <- matrix(points$z, nrow = 100)
 plot_ly(z=~surf, showlegend=FALSE, showscale=TRUE) %>%
   add_surface( opacity= 0.9 ) 
-
 dev.off()
