@@ -3,7 +3,7 @@
 # 
 # Here, n represents the number of dimensions and x_i \in [-5, 5] for i=1,...,n.
 
-# f(x) =  sum for i = 1 to n esilon[i] * | x[i]  - 1 /i |
+# f(x) =  sum for i = 1 to n epsilon[i] * | x[i]  - 1 /i |
 
 library(plotly)
 
@@ -17,8 +17,7 @@ z <- seq(0,0, length =100)
 
 
 set.seed(42)
-
-epsilon1 <- runif(length(z))
+epsilon1 <- runif(length(z)) 
 epsilon2 <- runif(length(z)) 
 
 z <- epsilon1 * abs(points$Var1 - 1) + epsilon2 * abs(points$Var2 -1/2) 
@@ -30,10 +29,11 @@ names(points) <- c("x", "y", "z")
 surf <- matrix(points$z, nrow = 100)
 
 
-plot_ly( z=~surf, showlegend=FALSE, showscale=FALSE, colors='Spectral') %>%
+plot_ly( z=~surf, showlegend=FALSE, showscale=FALSE) %>%
   add_surface( opacity= 0.9 ) 
-
-
+  
+#available colorscales
+#BrBG PiYG PRGn PuOr RdBu RdGy RdYlBu RdYlGn Spectral
 
 
 dev.off()
