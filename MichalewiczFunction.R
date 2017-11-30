@@ -7,7 +7,7 @@
 # 
 #   f(x) = -  sum for i = 1 to n sin(x[i]) *  (sin(i*x[i]^2 / Pi))^(2*m)
 #
-# It is usually set m = 10. Test area is usually restricted to hyphercube 0 ≤ x i ≤ π,
+# It is usually set m = 10. Test area is usually restricted to hyphercube 0 ≤ x i ≤ PI,
 # i = 1, . . . , n. The global minimum value has been approximated by f (x) =
 #   −4.687 for n = 5 and by f (x) = −9.66 for n = 10. Respective optimal solutions
 # are not given.
@@ -18,7 +18,10 @@ library(plotly)
 # lattice 
 x <- seq (0,pi , length=100)
 y <- seq (0,pi, length=100)
-z <- seq (0,0, length=100)
+
+
+x <- 0
+y <- 0
 
 m <-  10
 

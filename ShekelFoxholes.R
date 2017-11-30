@@ -10,7 +10,7 @@
 # function does not seem to be this difficult looking at the surface ....
 
 library(plotly)
-
+library(dplyr)
 
 # lattice 
 x <- seq (0,10, length=100)

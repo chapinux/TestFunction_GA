@@ -35,6 +35,13 @@ points <- expand.grid(x,y)
 
 z <- a * ( points$Var2 -b*points$Var1^2 + c * points$Var1 - d)^2 + e* (1-f)*cos(points$Var1) + e
 
+Branin <- function(x,y){
+  return (a * ( y -b*x^2 + c * x - d)^2 + e* (1-f)*cos(x) + e)
+  
+}
+
+
+
 points <- cbind(points, z)
 names(points) <- c("x", "y", "z")
 
@@ -43,3 +50,9 @@ surf <- matrix(points$z, nrow = 100)
 plot_ly(z=~surf, showlegend=FALSE, showscale=TRUE) %>%
   add_surface( opacity= 0.9 ) 
 dev.off()
+
+xx <- c(-5, 0, 1, 5, 10)
+yy <- c(-5, 0, 1, 5, 10)
+
+Branin(xx,yy)
+

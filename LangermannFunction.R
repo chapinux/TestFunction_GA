@@ -17,24 +17,25 @@ library(plotly)
 # lattice 
 x <- seq (0,10 , length=100)
 y <- seq (0,10, length=100)
-z <- seq (0,0, length=100)
 
-coeffC <- c( 1, 2, 5, 2, 3)
+
+z<- seq(0,0,10000)
+coeffC <- c( 5, 2, 1, 4, 9)
 coeffA <- c( 3, 5, 2, 1, 7)
 
 
 points <- expand.grid(x,y)
-
 for (i in 1:5){
 z <- z +  coeffC[i] * exp((-1/pi) * ((points$Var1- coeffA[i])^2 + (points$Var2- coeffA[i])^2))* cos( pi *  ((points$Var1-coeffA[i])^2 + (points$Var2-coeffA[i])^2))
 }
   
 
-points <- cbind(points, z)
+
+points <- cbind(points, -z)
 names(points) <- c("x", "y", "z")
 
 #take z as a matrix for surface display with plotly
-surf <- matrix(points$z, nrow = 1000)
+surf <- matrix(points$z, nrow = 100)
 plot_ly(z=~surf, showlegend=FALSE, showscale=TRUE) %>%
   add_surface( opacity= 0.85 ) 
 dev.off()

@@ -7,28 +7,27 @@
 
 library(plotly)
 
-
+cadre <- 14
 # lattice 
-x <- seq (-5.12,5.12 , length=100)
-y <- seq (-5.12,5.12, length=100)
+x <- seq (-cadre,cadre , length=100)
+y <- seq (-cadre,cadre, length=100)
 #every x,y couple
 points <- expand.grid(x,y)
 
 z <- seq(0,0, length =100)
+z <-  0.5 + ( cos(sin(abs(points$Var1^2 + points$Var2^2)))^2 -0.5) / ((1+ 0.001*((points$Var1^2 + points$Var2^2))^2)^2)
+#z <- z + 0.01*runif(length(z))
 
 
-for ( i in 1:5){
-  z <- z - i*cos((i + 1)*points$Var1 + i) *  (i*cos((i+1)*points$Var2 + i)) 
-}
-  
-
-
-  
 points <- cbind(points, z)
 names(points) <- c("x", "y", "z")
 
 #take z as a matrix for surface display with plotly
 surf <- matrix(points$z, nrow = 100)
 plot_ly(z=~surf, showlegend=FALSE, showscale=FALSE) %>%
-  add_surface( opacity= 0.9 ) 
-dev.off()
+  #add_surface( opacity= 0.9 ) 
+  add_contour(ncontours=10)
+
+
+
+twdev.off()

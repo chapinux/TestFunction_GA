@@ -3,13 +3,15 @@
 # 
 # Here, n represents the number of dimensions and x_i \in [-5, 5] for i=1,...,n.
 
-# f(x) =  sum for i = 1 to n epsilon[i] * | x[i]  - 1 /i |
+# f(x) =  sum for i = 1 to n epsilon[i] * | x[i]  - 1 /i |      (absolute value ofnoise *  x - 1/i)
 
 library(plotly)
 
 # lattice 
 x <- seq (-5,5, length=100) 
 y <- seq (-5,5, length=100) 
+
+
 #every x,y couple
 points <- expand.grid(x,y)
 

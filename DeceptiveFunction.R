@@ -40,6 +40,10 @@ alpha2 <- 0.7
 x <- seq(0, 1 , length=100)
 y <- seq(0, 1 , length=100)
 
+alpha1 <- 0.6
+alpha2 <- 0.4
+beta <- 3.5
+
 
 #every x,y couple
 points <- expand.grid(x,y)
@@ -47,6 +51,7 @@ points <- expand.grid(x,y)
 z <- seq(0,0, length =100)
 
 
+library(data.table)
 
 f1 <- function(x, alpha) {
    return(  4/5 - x/alpha  )
@@ -74,7 +79,7 @@ g <- function(X, alpha){
   }
   if (between(X,4/5 * alpha, alpha )){
     return(f2(X,alpha ))
-    }
+}
   
   if (between(X,alpha, (1 + 4*alpha)/5 )){
     return(f3(X, alpha))  
@@ -84,13 +89,11 @@ g <- function(X, alpha){
     }
 }
 
-z <- - (0.5 * unlist(lapply(points$Var1,g,alpha= alpha1)) + unlist(lapply(points$Var2,g,alpha=alpha2)) )^beta
 
+#  1/n = 0.5 because we are in 2D 
+z <- - (0.5 * (unlist(lapply(points$Var1,g,alpha= alpha1)) + unlist(lapply(points$Var2,g,alpha=alpha2))) )^beta
 
-
-
-
-
+z
 
 points <- cbind(points, z)
 names(points) <- c("x", "y", "z")

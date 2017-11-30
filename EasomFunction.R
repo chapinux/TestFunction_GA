@@ -18,6 +18,7 @@ x <- seq (-100,100 , length=100)
 y <- seq (-100,100, length=100)
 
 
+
 points <- expand.grid(x,y)
 
 z <- -cos(points$Var1) * cos(points$Var2)*exp( -(points$Var1 - pi)^2    - (points$Var2 - pi)^2    )

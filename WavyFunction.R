@@ -15,6 +15,9 @@ library(plotly)
 x <- seq (-pi,pi, length=100) 
 y <- seq (-pi,pi, length=100) 
 #every x,y couple
+
+x<- pi
+y <- pi
 points <- expand.grid(x,y)
 
 z <- seq(0,0, length =100)

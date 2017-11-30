@@ -26,8 +26,11 @@ library(plotly)
 
 # lattice 
 x <- seq (-65.536,65.536 , length=100)
-y <- seq (-65.536,65.536, length=100)
+x <- seq (-65.536,65.536 , length=100)
 
+
+x <-  16.0
+y <- 32.0
 
 firstAline <- rep(c(-32, -16, 0 , 16 , 32), 5)
 secondAline <- c(rep(-32, 5), rep(-16,5), rep(0,5), rep (16, 5), rep(32,5))
@@ -36,11 +39,11 @@ A <- rbind(firstAline, secondAline)
 
 points <- expand.grid(x,y)
 
-
+z<-0
 z <- seq(0,0, length= 100)
   
 for(j in 1:25){
-   z <- z + (j + (points$Var1 - A[1,j])^6 + (points$Var2 - A[2,j])^6)^-1 
+   z <- z + 1/(j + (points$Var1 - A[1,j])^6 + (points$Var2 - A[2,j])^6) 
 }  
 z <- (0.002 + z)^-1
 

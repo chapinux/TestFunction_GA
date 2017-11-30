@@ -18,7 +18,7 @@ y <- seq (-2,2, length=100)
 
 points <- expand.grid(x,y)
 
-z <- (1 + (points$Var1 + points$Var2 + 1 )^2 * (19-14*points$Var1 + 3*points$Var1^2 - 14*points$Var2 + 6 * points$Var1 * points$Var2 + 3* points$Var2^2) )*(30 + (2*points$Var1 - 3*points$Var2)^2 * (18- 32*points$Var1 + 12* points$Var2^2 + 48*points$Var2 - 36 * points$Var1 * points$Var2 + 27* points$Var2^2 ))
+z <- (1 + (points$Var1 + points$Var2 + 1 )^2 * (19-14*points$Var1 + 3*points$Var1^2 - 14*points$Var2 + 6 * points$Var1 * points$Var2 + 3* points$Var2^2) )*(30 + (2*points$Var1 - 3*points$Var2)^2 * (18- 32*points$Var1 + 12* points$Var1^2 + 48*points$Var2 - 36 * points$Var1 * points$Var2 + 27* points$Var2^2 ))
 
 
 points <- cbind(points, z)

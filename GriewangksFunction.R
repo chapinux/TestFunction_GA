@@ -19,13 +19,16 @@
 library(plotly)
 
 # lattice 
-x <- seq (-300,300 , length=100)
-y <- seq (-300,300, length=100)
+x <- seq (-40,40, length=100)
+y <- seq (-40,40, length=100)
 
+
+x <-  100
+y <- 100 
 
 points <- expand.grid(x,y)
 
- z <- ( 1/ 4000 ) * (points$Var1^2 + points$Var2^2 ) - (( cos(points$Var1) * cos(points$Var2 / sqrt(2)) + 1))
+ z <- ( 1/ 4000 ) * (points$Var1^2 + points$Var2^2 ) - ( cos(points$Var1) * cos(points$Var2 / sqrt(2)) ) + 1
 
 
 points <- cbind(points, z)
